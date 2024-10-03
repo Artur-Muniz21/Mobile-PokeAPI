@@ -23,7 +23,7 @@ O aplicativo Pokédex será desenvolvido em Kotlin para Android e consumirá dad
 ### Escopo
 
 - [x] Interface de cadastro e login de usuários.
-- [x] Mudança dos dados cadastrais.
+- [x] Mudança de senha.
 - [x] Listagem de Pokémon com opção de busca.
 - [x] Visualização de detalhes do Pokémon com atributos e evoluções.
 - [x] Funcionalidade de capturar, renomear e libertar Pokémon.
@@ -45,19 +45,24 @@ O aplicativo Pokédex será desenvolvido em Kotlin para Android e consumirá dad
 - [x] **RF09**: O sistema deve oferecer a opção de capturar o Pokémon para adicionar à Pokédex do usuário.
 
 ### Pokédex Personalizada
-- [x] **RF10**: O sistema deve ter uma seção chamada "Minha Pokédex", onde o usuário pode visualizar os Pokémon que ele capturou.
+- [x] **RF10**: O sistema deve ter uma seção chamada "Pokédex", onde o usuário pode visualizar os Pokémon que ele capturou.
 - [x] **RF11**: O sistema deve permitir que o usuário clique em um Pokémon capturado para visualizar suas informações.
 - [x] **RF12**: O sistema deve permitir que o usuário renomeie um Pokémon capturado.
 - [x] **RF13**: O sistema deve permitir que o usuário liberte um Pokémon capturado (removendo-o da Pokédex).
 
+### Aterar Senha
+- [x] **RF14**: O sistema deve ter uma seção de configuração com as opções de "Alterar senha" e "Sair da conta".
+- [x] **RF15**: O sistema deve permitir que o usuário altere sua senha caso sejam iguais.
+- [x] **RF16**: O sistema deve deslogar o usuário caso o mesmo clique em "Sair da conta".
+
 ## Requisitos Não Funcionais
 
 ### Usabilidade
-- [x] **RNF02**: O aplicativo deve ter uma interface intuitiva, permitindo navegação fácil entre as telas de busca, detalhes do Pokémon e Pokédex do usuário.
+- [x] **RNF01**: O aplicativo deve ter uma interface intuitiva, permitindo navegação fácil entre as telas de busca, detalhes do Pokémon e Pokédex do usuário.
 
 ### Segurança
-- [x] **RNF03**: As senhas dos usuários devem ser armazenadas de maneira segura utilizando criptografia.
-- [x] **RNF04**: O aplicativo deve utilizar autenticação de sessão para proteger as informações do usuário.
+- [x] **RNF02**: As senhas dos usuários devem ser armazenadas de maneira segura utilizando criptografia.
+- [x] **RNF03**: O aplicativo deve utilizar autenticação de sessão para proteger as informações do usuário.
 
 ## Fluxo de Navegação
 ### Fluxo de Cadastro e Login
@@ -72,12 +77,20 @@ O aplicativo Pokédex será desenvolvido em Kotlin para Android e consumirá dad
 
 ## Fluxo de Detalhes do Pokémon
 - O usuário vê os detalhes do Pokémon selecionado, incluindo sua imagem, atributos e evoluções.
-- O usuário pode clicar no ícone de lápis para renomear o Pokémon.
 - O usuário pode clicar no botão "Capturar" para adicionar o Pokémon à sua Pokédex.
 
 ## Fluxo de Minha Pokédex
 - O usuário clica em "Minha Pokédex" para visualizar a lista de Pokémon que capturou.
-- O usuário pode clicar em um Pokémon capturado para ver seus detalhes e poderá alterar seu nome ou clicar em "Libertar" para remove-lo da Pokedéx
+- O usuário pode clicar no ícone de lápis para renomear o Pokémon.
+- O usuário pode clicar em um Pokémon capturado para ver seus detalhes e poderá alterar seu nome ou clicar no ícone de lixeira para remove-lo da Pokedéx
+
+## Fluxo de Alterar Senha
+
+- Na Aba principal "Pokedéx", no canto superior direito terá uma engrenagem, que ao ser clicada abre a aba de configurações.
+- A tela de configurações tem as opções de "Alterar senha" ou de "Sair da conta".
+- Clicar em "Alterar senha" o usuário será redirecionado para uma tela com os campos de "Senha atual" e "Nova senha", com os botões de "Confirmar" e "Cancelar".
+- Caso o usuário clique em confirmar e as senhas coincidirem, a senha do usuário será atualizada, caso clique em "Cancelar", a operação será cancelada e o usuário será redirecionado
+
 
 ## Tecnologias e Ferramentas
 - [x] Linguagem de Programação: Kotlin
