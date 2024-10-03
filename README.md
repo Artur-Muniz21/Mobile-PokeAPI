@@ -13,7 +13,7 @@
 
 https://www.figma.com/file/wnxEIH8TGpnLTKQu1hfmyK?node-id=0:1&locale=en&type=design
 
-# Documento de Requisitos - Aplicativo Mobile Pokédex
+# Documento de Requisitos - Aplicativo Mobile Pokedéx
 
 ## Visão Geral
 
