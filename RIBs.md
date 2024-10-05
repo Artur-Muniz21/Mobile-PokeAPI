@@ -60,3 +60,7 @@ Apesar de ser uma solução poderosa, a arquitetura RIBs também enfrenta alguns
 ## Exemplos de Uso na Uber
 
 Um exemplo de como a Uber implementou a arquitetura RIBs é no gerenciamento de fluxo de solicitação de corrida. Cada etapa do processo - desde o momento em que o usuário solicita um carro até o ponto de chegada - pode ser vista como uma RIB. O sistema é capaz de lidar com múltiplas mudanças de estado (busca por motoristas, rota em tempo real, etc.) sem que uma RIB interfira na outra, garantindo uma experiência fluida.
+
+## Apresentação dos slides
+
+https://youtu.be/VtbNg2d2mH0?feature=shared
