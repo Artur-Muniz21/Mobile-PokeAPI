@@ -5,6 +5,11 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_change_password.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_create_account.xml">
         <config>
           <theme>@style/Theme.Pokev2</theme>
@@ -25,6 +30,16 @@
           <theme>@style/Theme.Pokev2</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_settings.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/dialog_options.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/item_pokemon.xml">
         <config>
           <theme>@style/Theme.Pokev2</theme>
@@ -37,14 +52,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="859e8c06-b57d-432f-a4f4-8bebbb370c72" name="Changes" comment="add cor ao tipo de pokemon">
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ChangePasswordActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/SettingsActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/res/drawable/circle_button_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/res/drawable/ic_add.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/res/drawable/ic_back.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_change_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/CreateAccountActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/CreateAccountActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_create_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_create_account.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/item_pokemon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/item_pokemon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +71,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\onlin\.android\avd\Medium_Phone_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RXCW6019MAL)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -105,11 +122,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin File" />
-        <option value="Kotlin Class" />
         <option value="resourceFile" />
+        <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -124,22 +141,22 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {}
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/aryMello/Mobile-PokeAPI.git",
-    "accountId": "9bd2e2c1-5dce-48e8-917c-d373952b26fe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aryMello/Mobile-PokeAPI.git&quot;,
+    &quot;accountId&quot;: &quot;9bd2e2c1-5dce-48e8-917c-d373952b26fe&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "aryMello",
-    "repository": "Mobile-PokeAPI"
+    &quot;owner&quot;: &quot;aryMello&quot;,
+    &quot;repository&quot;: &quot;Mobile-PokeAPI&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -164,7 +181,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "#8 on TEST",
+    "git-widget-placeholder": "TEST",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/onlin/AndroidStudioProjects/Pokev2/Code/settings.gradle.kts",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -184,6 +201,7 @@
       <recent name="C:\Users\onlin\AndroidStudioProjects\Pokev2\Code\app\src\main\java\com\example\pokev2\model" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.pokev2" />
       <recent name="com.example.pokev2.utils" />
       <recent name="com.example.pokev2.adapter" />
     </key>

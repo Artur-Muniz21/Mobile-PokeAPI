@@ -1,5 +1,7 @@
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -7,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokev2.R
+import com.example.pokev2.SettingsActivity
 import com.example.pokev2.adapter.PokemonAdapter
 import com.example.pokev2.api.PokeApiService
 import com.example.pokev2.model.Pokemon
@@ -35,11 +38,19 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize the settingButton and set the click listener
+        findViewById<Button>(R.id.settingsButton).setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
 
         setupRecyclerView()
         setupRetrofit()
@@ -47,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.pokemonRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3) // 3 colunas por grid
     }
 
