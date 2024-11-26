@@ -1,14 +1,19 @@
 package com.example.pokev2
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokev2.adapter.PokemonAdapter
 import com.example.pokev2.model.Pokemon
 import com.example.pokev2.model.PokemonListResponse
+import com.example.pokev2.ui.SettingsActivity
 import com.example.pokev2.utils.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +33,21 @@ class PokemonActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.pokemonRecyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3)
 
+        val settingsButton = findViewById<Button>(R.id.settingsButton)
+        settingsButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Search functionality
+        val searchEditText = findViewById<EditText>(R.id.searchEditText)
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filterPokemon(s.toString()) // Filter as text changes
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         fetchPokemonData()
     }
@@ -39,25 +59,45 @@ class PokemonActivity : AppCompatActivity() {
                 val pokemonSummaries = pokemonListResponse.results
 
                 for (pokemonSummary in pokemonSummaries) {
-                    val id = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
-                    val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(id)
+                    val game_index = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
+                    val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(game_index)
 
-                    // Extrai tipo de PokemonResponse
-                    val types = pokemonResponse.types.map { it.type.name } // pega nome dos tipos
-                    val pokemon = Pokemon(pokemonResponse.name, pokemonResponse.sprites.front_default, types)
+                    val speciesResponse = RetrofitClient.pokeApiService.getPokemonSpecies(game_index)
+                    val description = speciesResponse.flavor_text_entries
+                        .firstOrNull { it.language.name == "en" }
+                        ?.flavor_text?.replace("\n", " ")
+                        ?: "No description available."
+
+                    val pokemon = Pokemon(
+                        game_index = game_index,
+                        name = pokemonResponse.name.capitalize(),
+                        imageUrl = pokemonResponse.sprites.front_default ?: "",
+                        types = pokemonResponse.types.map { it.type.name },
+                        height = "${pokemonResponse.height / 10.0}m",
+                        weight = "${pokemonResponse.weight / 10.0}kg",
+                        gender = "♂ 87.5%, ♀ 12.5%", // Placeholder logic
+                        base_experience = pokemonResponse.base_experience ?: 0,
+                        xDescription = description
+                    )
                     pokemonList.add(pokemon)
                 }
 
-                // manda UI para main thread
                 withContext(Dispatchers.Main) {
-                    adapter = PokemonAdapter(pokemonList)
+                    adapter = PokemonAdapter(pokemonList.toMutableList()) // Pass a mutable list
                     recyclerView.adapter = adapter
                 }
             } catch (e: Exception) {
-                Log.e("PokemonActivity", "Error ao fetch data", e)
+                Log.e("PokemonActivity", "Error fetching data", e)
             }
         }
     }
 
-
+    private fun filterPokemon(query: String?) {
+        val lowercaseQuery = query?.lowercase() ?: ""
+        val filteredList = pokemonList.filter { pokemon ->
+            pokemon.name.lowercase().contains(lowercaseQuery) ||
+                    pokemon.types.any { type -> type.lowercase().contains(lowercaseQuery) }
+        }
+        adapter.updateList(filteredList) // Update adapter with filtered data
+    }
 }

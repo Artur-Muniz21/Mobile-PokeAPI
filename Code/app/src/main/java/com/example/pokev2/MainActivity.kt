@@ -1,7 +1,5 @@
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,7 +7,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokev2.R
-import com.example.pokev2.SettingsActivity
 import com.example.pokev2.adapter.PokemonAdapter
 import com.example.pokev2.api.PokeApiService
 import com.example.pokev2.model.Pokemon
@@ -21,11 +18,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -43,12 +37,6 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        // Initialize the settingButton and set the click listener
-        findViewById<Button>(R.id.settingsButton).setOnClickListener {
-            val intent = Intent(this, SettingsActivity::class.java)
-            startActivity(intent)
         }
 
 
@@ -76,30 +64,46 @@ class MainActivity : AppCompatActivity() {
     private fun fetchPokemonData() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Fetch lista de pokemon
                 val pokemonListResponse: PokemonListResponse = RetrofitClient.pokeApiService.getPokemons()
                 val pokemonSummaries = pokemonListResponse.results
 
-                // loop sumario e fetch detalhes
                 for (pokemonSummary in pokemonSummaries) {
-                    val id = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
-                    val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(id)
+                    val game_index = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
+                    val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(game_index)
 
-                    // Extrai os detalhes de PokemonResponse
-                    val types = pokemonResponse.types.map { it.type.name } // pega o nome correto no json
-                    val pokemon = Pokemon(pokemonResponse.name, pokemonResponse.sprites.front_default, types)
+                    val types = pokemonResponse.types.map { it.type.name } // Extract types
+
+                    // Fetch Pokémon species for the description
+                    val speciesResponse = RetrofitClient.pokeApiService.getPokemonSpecies(game_index)
+                    val description = speciesResponse.flavor_text_entries
+                        .firstOrNull { it.language.name == "en" }
+                        ?.flavor_text?.replace("\n", " ")
+                        ?: "No description available."
+
+
+                    val pokemon = Pokemon(
+                        game_index = game_index,
+                        name = pokemonResponse.name.capitalize(),
+                        imageUrl = pokemonResponse.sprites.front_default ?: "",
+                        types = pokemonResponse.types.map { it.type.name },
+                        height = "${pokemonResponse.height / 10.0}m", // Convert decimeters to meters
+                        weight = "${pokemonResponse.weight / 10.0}kg", // Convert hectograms to kilograms
+                        gender = "♂ 87.5%, ♀ 12.5%", // Placeholder logic
+                        base_experience = pokemonResponse.base_experience ?: 0,
+                        xDescription = description
+                    )
                     pokemonList.add(pokemon)
                 }
 
-                // bota UI na main thread
                 withContext(Dispatchers.Main) {
                     adapter = PokemonAdapter(pokemonList)
                     recyclerView.adapter = adapter
                 }
             } catch (e: Exception) {
-                Log.e("PokemonActivity", "Error ao buscar data", e)
+                Log.e("PokemonActivity", "Error fetching data", e)
             }
         }
     }
+
 
 }

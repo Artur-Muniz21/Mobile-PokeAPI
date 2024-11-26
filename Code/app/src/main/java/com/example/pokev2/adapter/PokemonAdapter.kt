@@ -1,6 +1,7 @@
 package com.example.pokev2.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pokev2.AboutPokemonActivity
 import com.example.pokev2.R
 import com.example.pokev2.model.Pokemon
 import com.squareup.picasso.Picasso
 
-class PokemonAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+class PokemonAdapter(private var pokemonList: MutableList<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.pokemonNameTextView)
@@ -20,16 +22,32 @@ class PokemonAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adap
         private val typeTextView: TextView = itemView.findViewById(R.id.pokemonTypeTextView)
 
         fun bind(pokemon: Pokemon) {
-            nameTextView.text = pokemon.name.capitalize() // bota em capital
-            typeTextView.text = pokemon.types.joinToString(", ") // usa type como string
-            Picasso.get().load(pokemon.imageUrl).into(imageView) // carrega imagem usando o picasso api
+            nameTextView.text = pokemon.name.capitalize() // Capitalize name
+            typeTextView.text = pokemon.types.joinToString(", ") // Convert types to string
+            Picasso.get().load(pokemon.imageUrl).into(imageView) // Load image using Picasso
 
-            // ajusta o plano de fundo de acordo com o primeiro tipo
+            // Adjust the background color based on the first Pokémon type
             val type = pokemon.types.firstOrNull()?.toLowerCase() ?: "normal" // Default
-            typeTextView.setBackgroundColor(getColorForType(itemView.context, type)) // muda a cor do plano de fundo do tipo
+            typeTextView.setBackgroundColor(getColorForType(itemView.context, type)) // Set background color
+
+            // Set up a click listener for the Pokémon card
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, AboutPokemonActivity::class.java).apply {
+                    putExtra("pokemonName", pokemon.name)
+                    putExtra("pokemonImage", pokemon.imageUrl)
+                    putExtra("pokemonTypes", pokemon.types.toTypedArray())
+                    putExtra("pokemonHeight", pokemon.height)
+                    putExtra("pokemonWeight", pokemon.weight)
+                    putExtra("pokemonbase_experience", pokemon.base_experience.toString())
+                    putExtra("pokemonDescription", pokemon.xDescription)
+                    putExtra("pokemonId", pokemon.game_index)
+                }
+                context.startActivity(intent)
+            }
         }
 
-        // carraga a cor para cada tipo
+        // Get background color for each Pokémon type
         private fun getColorForType(context: Context, type: String): Int {
             return when (type) {
                 "fire" -> ContextCompat.getColor(context, R.color.fire)
@@ -45,7 +63,6 @@ class PokemonAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adap
                 "ground" -> ContextCompat.getColor(context, R.color.ground)
                 "bug" -> ContextCompat.getColor(context, R.color.bug)
                 "rock" -> ContextCompat.getColor(context, R.color.rock)
-
                 else -> ContextCompat.getColor(context, R.color.normal) // Default
             }
         }
@@ -61,4 +78,11 @@ class PokemonAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adap
     }
 
     override fun getItemCount() = pokemonList.size
+
+    // Method to update the list dynamically
+    fun updateList(newList: List<Pokemon>) {
+        pokemonList.clear()
+        pokemonList.addAll(newList)
+        notifyDataSetChanged()
+    }
 }
