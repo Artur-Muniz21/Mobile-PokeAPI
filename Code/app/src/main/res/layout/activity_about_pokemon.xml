@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_gradient"
     android:padding="16dp">
 
     <LinearLayout
-        android:id="@+id/backgroundLayout"
+        android:id="@+id/backgroundDesign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="32dp">
+        android:paddingBottom="32dp"
+        android:background="@drawable/background_gradient"
+        >
 
         <!-- Top Section -->
         <RelativeLayout
@@ -22,7 +23,7 @@
 
             <!-- Background Circle or Design -->
             <ImageView
-                android:id="@+id/backgroundDesign"
+                android:id="@+id/backgroundView"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
@@ -101,7 +102,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Height"
+                        android:text="Tamanho"
                         android:textSize="14sp"
                         android:textColor="@color/grey" />
 
@@ -126,7 +127,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Weight"
+                        android:text="Peso"
                         android:textSize="14sp"
                         android:textColor="@color/grey" />
 
@@ -151,7 +152,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Base EXP"
+                        android:text="EXP Inicial"
                         android:textSize="14sp"
                         android:textColor="@color/grey" />
 

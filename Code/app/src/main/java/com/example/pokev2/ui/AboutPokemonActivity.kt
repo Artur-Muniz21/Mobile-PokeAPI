@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.pokev2.model.EvolutionChain
+import com.example.pokev2.model.Pokemon
 import com.example.pokev2.model.Species
+import com.example.pokev2.utils.CapturedPokemonManager
 import com.example.pokev2.utils.RetrofitClient
 import com.example.pokev2.utils.TypeUtils
 import kotlinx.coroutines.CoroutineScope
@@ -39,7 +41,7 @@ class AboutPokemonActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about_pokemon)
 
         // Initialize views
-        backgroundView = findViewById(R.id.backgroundLayout)
+        backgroundView = findViewById(R.id.backgroundDesign)
         pokemonImageView = findViewById(R.id.pokemonImageView)
         pokemonNameTextView = findViewById(R.id.pokemonNameTextView)
         pokemonIdTextView = findViewById(R.id.pokemonIdTextView)
@@ -96,8 +98,20 @@ class AboutPokemonActivity : AppCompatActivity() {
         }
 
         capturarButton.setOnClickListener {
-            Toast.makeText(this, "Captured!", Toast.LENGTH_SHORT).show()
+            val pokemon = Pokemon(
+                game_index = pokemonIdTextView.text.toString().filter { it.isDigit() }.toInt(),
+                name = pokemonNameTextView.text.toString(),
+                imageUrl = pokemonImage,
+                types = pokemonTypes,
+                height = pokemonHeightTextView.text.toString(),
+                weight = pokemonWeightTextView.text.toString(),
+                base_experience = pokemonbase_experienceTextView.text.toString().toInt()
+            )
+            CapturedPokemonManager.addPokemon(pokemon)
+            Toast.makeText(this, "${pokemon.name} capturado!", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
     private fun evolvePokemon(evolutionChainId: Int) {
@@ -105,41 +119,48 @@ class AboutPokemonActivity : AppCompatActivity() {
             try {
                 if (evolutionChainId == -1) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@AboutPokemonActivity, "No evolution data available", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AboutPokemonActivity, "Nenhuma evolução disponivel", Toast.LENGTH_SHORT).show()
                     }
                     return@launch
                 }
 
                 val evolutionResponse = RetrofitClient.pokeApiService.getEvolutionChain(evolutionChainId)
-                val currentName = pokemonNameTextView.text.toString().lowercase()
+                val currentName = pokemonNameTextView.text.toString().trim().lowercase()
                 val nextEvolution = findNextEvolution(evolutionResponse.chain, currentName)
 
                 withContext(Dispatchers.Main) {
                     if (nextEvolution == null) {
-                        Toast.makeText(this@AboutPokemonActivity, "This Pokémon cannot evolve further!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AboutPokemonActivity, "Esse pokemon não pode evoluir mais!", Toast.LENGTH_SHORT).show()
                     } else {
                         updateUIWithEvolution(nextEvolution)
                     }
                 }
             } catch (e: Exception) {
-                Log.e("AboutPokemonActivity", "Error evolving Pokémon", e)
+                Log.e("AboutPokemonActivity", "Error ao evoluir o pokemon", e)
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@AboutPokemonActivity, "Failed to evolve Pokémon", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AboutPokemonActivity, "Error ao evoluir pokemon", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     private fun findNextEvolution(chain: EvolutionChain, currentName: String): Species? {
+        Log.d("AboutPokemonActivity", "Checking species: ${chain.species.name}")
         if (chain.species.name == currentName) {
-            return chain.evolves_to.firstOrNull()?.species
+            // Return the first available evolution if any
+            val next = chain.evolves_to.firstOrNull()?.species
+            Log.d("AboutPokemonActivity", "Next evolution: ${next?.name ?: "None"}")
+            return next
         }
+        // Recursively check in the evolves_to list
         for (evolution in chain.evolves_to) {
             val next = findNextEvolution(evolution, currentName)
             if (next != null) return next
         }
+        Log.d("AboutPokemonActivity", "No further evolutions found for $currentName")
         return null
     }
+
 
     private fun updateUIWithEvolution(species: Species) {
         val evolvedId = species.url.split("/").dropLast(1).last().toInt()

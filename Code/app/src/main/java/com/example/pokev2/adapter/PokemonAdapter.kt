@@ -14,7 +14,7 @@ import com.example.pokev2.R
 import com.example.pokev2.model.Pokemon
 import com.squareup.picasso.Picasso
 
-class PokemonAdapter(private var pokemonList: MutableList<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+class PokemonAdapter(private var pokemonList: List<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.pokemonNameTextView)
@@ -81,8 +81,7 @@ class PokemonAdapter(private var pokemonList: MutableList<Pokemon>) : RecyclerVi
 
     // Method to update the list dynamically
     fun updateList(newList: List<Pokemon>) {
-        pokemonList.clear()
-        pokemonList.addAll(newList)
-        notifyDataSetChanged()
+        pokemonList = newList
+        notifyDataSetChanged() // Notify the adapter that data has changed
     }
 }

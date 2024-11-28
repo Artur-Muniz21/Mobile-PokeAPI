@@ -7,12 +7,14 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokev2.adapter.PokemonAdapter
 import com.example.pokev2.model.Pokemon
 import com.example.pokev2.model.PokemonListResponse
+import com.example.pokev2.ui.MinhaPokedexActivity
 import com.example.pokev2.ui.SettingsActivity
 import com.example.pokev2.utils.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
@@ -38,6 +40,13 @@ class PokemonActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+
+        val addButton = findViewById<ImageButton>(R.id.addButton)
+        addButton.setOnClickListener {
+            val intent = Intent(this, MinhaPokedexActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Search functionality
         val searchEditText = findViewById<EditText>(R.id.searchEditText)

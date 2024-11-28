@@ -20,6 +20,8 @@
             android:exported="false"/>
         <activity android:name=".PokemonActivity"
             android:exported="false"/>
+        <activity android:name=".ui.MinhaPokedexActivity"
+            android:exported="false"/>
         <activity android:name=".ui.SettingsActivity" android:exported="false"/>
         <activity android:name=".ui.LoginActivity"
             android:exported="true">
