@@ -1,10 +1,8 @@
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/backgroundDesign"
@@ -12,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="32dp"
-        >
+        tools:ignore="MissingConstraints">
 
         <!-- Top Section -->
         <RelativeLayout
@@ -27,9 +25,9 @@
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/background_circle"
+                android:alpha="0.5"
                 android:scaleType="fitCenter"
-                android:alpha="0.5" />
+                android:src="@drawable/background_circle" />
 
             <!-- Pokémon Image -->
             <ImageView
@@ -49,9 +47,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:text="Pikachu"
+                android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
             <!-- Pokémon ID -->
             <TextView
@@ -61,28 +59,26 @@
                 android:layout_below="@id/pokemonNameTextView"
                 android:layout_centerHorizontal="true"
                 android:text="#025"
-                android:textSize="16sp"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
         </RelativeLayout>
 
         <!-- Pokémon Description -->
         <TextView
-            android:id="@+id/textViewDescription"
+            android:id="@+id/pokemonDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="18sp"
             android:lineSpacingExtra="6dp"
+            android:text="Descrição do Pokémon"
             android:textColor="@color/black"
-            android:text="Pikachu is an Electric-type Pokémon known for its adorable looks and powerful electric shocks." />
+            android:textSize="18sp" />
 
         <!-- Stats Section -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,24 +91,24 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tamanho"
-                        android:textSize="14sp"
-                        android:textColor="@color/grey" />
+                        android:text="Altura"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/textViewHeight"
+                        android:id="@+id/pokemonHeightTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
+                        android:text="0.4m"
                         android:textColor="@color/black"
-                        tools:text="0.4m" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Weight -->
@@ -120,113 +116,72 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Peso"
-                        android:textSize="14sp"
-                        android:textColor="@color/grey" />
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/textViewWeight"
+                        android:id="@+id/pokemonWeightTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
                         tools:text="6.0kg" />
                 </LinearLayout>
-
-                <!-- Base EXP -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="EXP Inicial"
-                        android:textSize="14sp"
-                        android:textColor="@color/grey" />
-
-                    <TextView
-                        android:id="@+id/textViewbase_experience"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        tools:text="112" />
-                </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Weakness Container -->
-        <LinearLayout
-            android:id="@+id/weaknessContainer"
+        <!-- Input Field for Editing Name -->
+        <EditText
+            android:id="@+id/editNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Evolution Section -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <LinearLayout
-                android:id="@+id/evolutionContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
-
-        <!-- Button Container -->
-        <LinearLayout
-            android:id="@+id/buttonContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:paddingHorizontal="16dp"
-            tools:ignore="MissingConstraints">
+            android:hint="Digite um novo nome"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
+        <!-- Button Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Update Button -->
+
+            <!-- Release Button -->
             <Button
-                android:id="@+id/buttonEvoluir"
+                android:id="@+id/atualizarButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Evoluir"
-                android:backgroundTint="@color/lightBlue"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
                 android:layout_marginEnd="8dp"
-                app:cornerRadius="8dp" />
+                android:layout_weight="1"
+                android:backgroundTint="@color/blue"
+                android:text="Atualizar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
             <Button
-                android:id="@+id/buttonCapturar"
+                android:id="@+id/libertarButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Capturar"
-                android:backgroundTint="@color/grey"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
                 android:layout_marginStart="8dp"
-                app:cornerRadius="8dp" />
-
+                android:layout_weight="1"
+                android:backgroundTint="@color/red"
+                android:text="Libertar"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <Button
@@ -238,6 +193,8 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/ic_back"
             android:clickable="true" />
-
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

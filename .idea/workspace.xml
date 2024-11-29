@@ -5,6 +5,16 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_about_pokemon.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_about_pokemon_minha_pokedex.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_change_password.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -23,6 +33,11 @@
       <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.Pokev2</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_minha_pokedex.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/Code/app/src/main/res/layout/activity_pokemon.xml">
@@ -47,7 +62,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="859e8c06-b57d-432f-a4f4-8bebbb370c72" name="Changes" comment="add buttons and settings option">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/model/Pokemon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/model/Pokemon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/MinhaPokedexActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/MinhaPokedexActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/utils/CapturedPokemonManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/utils/CapturedPokemonManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_about_pokemon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_about_pokemon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_minha_pokedex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/activity_minha_pokedex.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +87,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=RXCW6019MAL)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\avmuniz\.android\avd\Pixel_7_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -70,6 +100,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/Code/app">
           <activation />
         </task>
         <projects_view>
@@ -111,6 +144,7 @@
         <option value="Kotlin Data Class" />
         <option value="Kotlin File" />
         <option value="resourceFile" />
+        <option value="Class" />
         <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
       </list>
@@ -119,7 +153,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,6 +177,9 @@
     &quot;repository&quot;: &quot;Mobile-PokeAPI&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -169,13 +206,16 @@
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;TEST&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/onlin/AndroidStudioProjects/Pokev2/Code/settings.gradle.kts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/avmuniz/Desktop/Mobile-PokeAPI&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\onlin\\.gradle&quot;
+      &quot;C:\\Users\\avmuniz\\.gradle&quot;
     ]
   }
 }</component>
@@ -192,7 +232,7 @@
       <recent name="com.example.pokev2.adapter" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.LoginActivity (1)">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="Code.Pokev2.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="Code.Pokev2.app.main~1" />
       <option name="DEPLOY" value="true" />
@@ -326,7 +366,6 @@
       </method>
     </configuration>
     <configuration name="LoginActivity (1)" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
-      <module name="Code.Pokev2.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -854,7 +893,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/TEST" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

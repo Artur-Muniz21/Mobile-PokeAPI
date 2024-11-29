@@ -1,16 +1,21 @@
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pokev2.AboutPokemonActivity
 import com.example.pokev2.R
 import com.example.pokev2.adapter.PokemonAdapter
 import com.example.pokev2.api.PokeApiService
 import com.example.pokev2.model.Pokemon
 import com.example.pokev2.model.PokemonListResponse
+import com.example.pokev2.ui.AboutPokemonMinhaPokedexActivity
+import com.example.pokev2.ui.MinhaPokedexActivity
 import com.example.pokev2.utils.RetrofitClient
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -43,6 +48,16 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupRetrofit()
         fetchPokemonData() // Fetch Pokémon data
+
+        val addButton: ImageButton = findViewById(R.id.addButton)
+        addButton.setOnClickListener {
+            onAddButtonClick()
+        }
+    }
+
+    private fun onAddButtonClick() {
+        val intent = Intent(this, MinhaPokedexActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setupRecyclerView() {

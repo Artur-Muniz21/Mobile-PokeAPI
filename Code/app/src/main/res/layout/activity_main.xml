@@ -72,8 +72,8 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/ic_add"
-        android:contentDescription="Add Pokémon"
-        android:layout_marginBottom="32dp" />
+        android:contentDescription="Add Pokémon" />
 
 </FrameLayout>

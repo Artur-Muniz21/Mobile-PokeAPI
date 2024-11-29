@@ -14,7 +14,10 @@ import com.example.pokev2.R
 import com.example.pokev2.model.Pokemon
 import com.squareup.picasso.Picasso
 
-class PokemonAdapter(private var pokemonList: List<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
+class PokemonAdapter(
+    private var pokemonList: List<Pokemon>,
+    private val onItemClick: ((Pokemon) -> Unit)? = null // Callback opcional para clique customizado
+) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.pokemonNameTextView)
@@ -32,18 +35,23 @@ class PokemonAdapter(private var pokemonList: List<Pokemon>) : RecyclerView.Adap
 
             // Set up a click listener for the Pokémon card
             itemView.setOnClickListener {
-                val context = itemView.context
-                val intent = Intent(context, AboutPokemonActivity::class.java).apply {
-                    putExtra("pokemonName", pokemon.name)
-                    putExtra("pokemonImage", pokemon.imageUrl)
-                    putExtra("pokemonTypes", pokemon.types.toTypedArray())
-                    putExtra("pokemonHeight", pokemon.height)
-                    putExtra("pokemonWeight", pokemon.weight)
-                    putExtra("pokemonbase_experience", pokemon.base_experience.toString())
-                    putExtra("pokemonDescription", pokemon.xDescription)
-                    putExtra("pokemonId", pokemon.game_index)
+                if (onItemClick != null) {
+                    onItemClick?.let { it1 -> it1(pokemon) } // Custom click behavior provided by context
+                } else {
+                    // Default behavior if no custom click provided
+                    val context = itemView.context
+                    val intent = Intent(context, AboutPokemonActivity::class.java).apply {
+                        putExtra("pokemonName", pokemon.name)
+                        putExtra("pokemonImage", pokemon.imageUrl)
+                        putExtra("pokemonTypes", pokemon.types.toTypedArray())
+                        putExtra("pokemonHeight", pokemon.height)
+                        putExtra("pokemonWeight", pokemon.weight)
+                        putExtra("pokemonbase_experience", pokemon.base_experience.toString())
+                        putExtra("pokemonDescription", pokemon.xDescription)
+                        putExtra("pokemonId", pokemon.game_index)
+                    }
+                    context.startActivity(intent)
                 }
-                context.startActivity(intent)
             }
         }
 

@@ -3,6 +3,7 @@ package com.example.pokev2
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -92,6 +93,12 @@ class AboutPokemonActivity : AppCompatActivity() {
             fetchAndDisplayEvolutions(evolutionChainId, evolutionContainer)
         }
 
+        // Back Button Functionality
+        val backButton: Button = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            finish() // Return to the previous activity
+        }
+
         // Button logic
         evoluirButton.setOnClickListener {
             evolvePokemon(evolutionChainId)
@@ -105,9 +112,18 @@ class AboutPokemonActivity : AppCompatActivity() {
                 types = pokemonTypes,
                 height = pokemonHeightTextView.text.toString(),
                 weight = pokemonWeightTextView.text.toString(),
-                base_experience = pokemonbase_experienceTextView.text.toString().toInt()
+                base_experience = pokemonbase_experienceTextView.text.toString().toInt(),
+                xDescription = pokemonDescriptionTextView.text.toString()
             )
-            CapturedPokemonManager.addPokemon(pokemon)
+            CapturedPokemonManager.addPokemon(
+                pokemon,
+                onSuccess = {
+                    Toast.makeText(this, "${pokemon.name} capturado com sucesso!", Toast.LENGTH_SHORT).show()
+                },
+                onFailure = { exception ->
+                    Toast.makeText(this, "Erro ao capturar ${pokemon.name}: ${exception.message}", Toast.LENGTH_SHORT).show()
+                }
+            )
             Toast.makeText(this, "${pokemon.name} capturado!", Toast.LENGTH_SHORT).show()
         }
 

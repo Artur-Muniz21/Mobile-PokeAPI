@@ -8,7 +8,6 @@
     <color name="backgroundLight">#F5F5F5</color>
     <color name="white">#FFFFFF</color>
 
-    //cor para temas
     <color name="black">#303943</color>
     <color name="blue">#429BED</color>
     <color name="brown">#B1736C</color>
@@ -27,7 +26,6 @@
     <color name="teal">#4FC1A6</color>
     <color name="yellow">#F6C747</color>
 
-    //cor pokemons
     <color name="fire">#FF5733</color>
     <color name="water">#007BFF</color>
     <color name="grass">#28A745</color>
