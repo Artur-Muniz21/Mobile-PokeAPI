@@ -90,10 +90,6 @@ class MainActivity : AppCompatActivity() {
 
                     // Fetch Pokémon species for the description
                     val speciesResponse = RetrofitClient.pokeApiService.getPokemonSpecies(game_index)
-                    val description = speciesResponse.flavor_text_entries
-                        .firstOrNull { it.language.name == "en" }
-                        ?.flavor_text?.replace("\n", " ")
-                        ?: "No description available."
 
 
                     val pokemon = Pokemon(

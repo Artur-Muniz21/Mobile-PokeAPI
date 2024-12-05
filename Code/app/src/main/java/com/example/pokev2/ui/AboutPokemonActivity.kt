@@ -29,10 +29,7 @@ class AboutPokemonActivity : AppCompatActivity() {
     private lateinit var pokemonHeightTextView: TextView
     private lateinit var pokemonWeightTextView: TextView
     private lateinit var pokemonbase_experienceTextView: TextView
-    private lateinit var pokemonDescriptionTextView: TextView
     private lateinit var weaknessContainer: LinearLayout
-    private lateinit var evolutionContainer: LinearLayout
-    private lateinit var evoluirButton: View
     private lateinit var capturarButton: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,10 +44,7 @@ class AboutPokemonActivity : AppCompatActivity() {
         pokemonHeightTextView = findViewById(R.id.textViewHeight)
         pokemonWeightTextView = findViewById(R.id.textViewWeight)
         pokemonbase_experienceTextView = findViewById(R.id.textViewbase_experience)
-        pokemonDescriptionTextView = findViewById(R.id.textViewDescription)
         weaknessContainer = findViewById(R.id.weaknessContainer)
-        evolutionContainer = findViewById(R.id.evolutionContainer)
-        evoluirButton = findViewById(R.id.buttonEvoluir)
         capturarButton = findViewById(R.id.buttonCapturar)
 
         // Retrieve data from Intent
@@ -61,7 +55,6 @@ class AboutPokemonActivity : AppCompatActivity() {
         val pokemonHeight = intent.getStringExtra("pokemonHeight") ?: "Unknown"
         val pokemonWeight = intent.getStringExtra("pokemonWeight") ?: "Unknown"
         val pokemonbase_experience = intent.getStringExtra("pokemonbase_experience") ?: "Unknown"
-        val pokemonDescription = intent.getStringExtra("pokemonDescription") ?: "No description available."
 
         // Apply background gradient
         val primaryType = pokemonTypes.firstOrNull() ?: "normal"
@@ -73,7 +66,6 @@ class AboutPokemonActivity : AppCompatActivity() {
         pokemonHeightTextView.text = pokemonHeight
         pokemonWeightTextView.text = pokemonWeight
         pokemonbase_experienceTextView.text = pokemonbase_experience
-        pokemonDescriptionTextView.text = pokemonDescription
 
         // Load Pokémon image
         Glide.with(this)

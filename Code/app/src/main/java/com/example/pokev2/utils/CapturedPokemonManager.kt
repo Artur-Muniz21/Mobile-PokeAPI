@@ -59,30 +59,4 @@ object CapturedPokemonManager {
             }
 
     }
-
-    // Editar um Pokémon pelo ID
-    fun updatePokemon(pokemonId: Int, updatedPokemon: Pokemon, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val pokemonIdStr = pokemonId.toString()
-        database.child(pokemonIdStr)
-            .setValue(updatedPokemon)
-            .addOnSuccessListener {
-                onSuccess()
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
-    }
-
-    // Deletar um Pokémon pelo ID
-    fun deletePokemon(pokemonId: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val pokemonIdStr = pokemonId.toString()
-        database.child(pokemonIdStr)
-            .removeValue()
-            .addOnSuccessListener {
-                onSuccess()
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
-    }
 }

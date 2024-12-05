@@ -66,15 +66,6 @@
         </RelativeLayout>
 
         <!-- Pokémon Description -->
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp"
-            android:lineSpacingExtra="6dp"
-            android:textColor="@color/black"
-            android:text="Pikachu is an Electric-type Pokémon known for its adorable looks and powerful electric shocks." />
 
         <!-- Stats Section -->
         <androidx.cardview.widget.CardView
@@ -177,19 +168,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Evolution Section -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <LinearLayout
-                android:id="@+id/evolutionContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
-
         <!-- Button Container -->
         <LinearLayout
             android:id="@+id/buttonContainer"
@@ -202,18 +180,6 @@
             android:layout_marginBottom="16dp"
             android:paddingHorizontal="16dp"
             tools:ignore="MissingConstraints">
-
-            <Button
-                android:id="@+id/buttonEvoluir"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Evoluir"
-                android:backgroundTint="@color/lightBlue"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:layout_marginEnd="8dp"
-                app:cornerRadius="8dp" />
 
             <Button
                 android:id="@+id/buttonCapturar"

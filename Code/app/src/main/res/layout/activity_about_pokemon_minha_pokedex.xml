@@ -64,15 +64,6 @@
         </RelativeLayout>
 
         <!-- Pokémon Description -->
-        <TextView
-            android:id="@+id/pokemonDescriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="6dp"
-            android:text="Descrição do Pokémon"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
 
         <!-- Stats Section -->
         <androidx.cardview.widget.CardView
