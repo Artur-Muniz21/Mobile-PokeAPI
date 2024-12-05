@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 
 class PokemonAdapter(
     private var pokemonList: List<Pokemon>,
-    private val onItemClick: ((Pokemon) -> Unit)? = null // Callback opcional para clique customizado
+    private val onItemClick: ((Pokemon) -> Unit)? = null
 ) : RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>() {
 
     inner class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,21 +25,17 @@ class PokemonAdapter(
         private val typeTextView: TextView = itemView.findViewById(R.id.pokemonTypeTextView)
 
         fun bind(pokemon: Pokemon) {
-            nameTextView.text = pokemon.name.capitalize() // Capitalize name
-            typeTextView.text = pokemon.types.joinToString(", ") // Convert types to string
-            Picasso.get().load(pokemon.imageUrl).into(imageView) // Load image using Picasso
+            nameTextView.text = pokemon.name.capitalize()
+            typeTextView.text = pokemon.types.joinToString(", ")
+            Picasso.get().load(pokemon.imageUrl).into(imageView)
 
-            // Adjust the background color based on the first Pokémon type
-            val type = pokemon.types.firstOrNull()?.toLowerCase() ?: "normal" // Default
-            typeTextView.setTextColor(getColorForType(itemView.context, type)) // Define a cor do texto
+            val type = pokemon.types.firstOrNull()?.toLowerCase() ?: "normal"
+            typeTextView.setTextColor(getColorForType(itemView.context, type))
 
-
-            // Set up a click listener for the Pokémon card
             itemView.setOnClickListener {
                 if (onItemClick != null) {
-                    onItemClick?.let { it1 -> it1(pokemon) } // Custom click behavior provided by context
+                    onItemClick?.let { it1 -> it1(pokemon) }
                 } else {
-                    // Default behavior if no custom click provided
                     val context = itemView.context
                     val intent = Intent(context, AboutPokemonActivity::class.java).apply {
                         putExtra("pokemonName", pokemon.name)
@@ -55,7 +51,6 @@ class PokemonAdapter(
             }
         }
 
-        // Get background color for each Pokémon type
         private fun getColorForType(context: Context, type: String): Int {
             return when (type) {
                 "fire" -> ContextCompat.getColor(context, R.color.fire)
@@ -71,7 +66,7 @@ class PokemonAdapter(
                 "ground" -> ContextCompat.getColor(context, R.color.ground)
                 "bug" -> ContextCompat.getColor(context, R.color.bug)
                 "rock" -> ContextCompat.getColor(context, R.color.rock)
-                else -> ContextCompat.getColor(context, R.color.normal) // Default
+                else -> ContextCompat.getColor(context, R.color.normal)
             }
         }
     }
@@ -87,9 +82,8 @@ class PokemonAdapter(
 
     override fun getItemCount() = pokemonList.size
 
-    // Method to update the list dynamically
     fun updateList(newList: List<Pokemon>) {
         pokemonList = newList
-        notifyDataSetChanged() // Notify the adapter that data has changed
+        notifyDataSetChanged()
     }
 }

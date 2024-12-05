@@ -29,7 +29,6 @@ class AboutPokemonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_pokemon)
 
-        // Initialize views
         backgroundView = findViewById(R.id.backgroundDesign)
         pokemonImageView = findViewById(R.id.pokemonImageView)
         pokemonNameTextView = findViewById(R.id.pokemonNameTextView)
@@ -40,7 +39,6 @@ class AboutPokemonActivity : AppCompatActivity() {
         weaknessContainer = findViewById(R.id.weaknessContainer)
         capturarButton = findViewById(R.id.buttonCapturar)
 
-        // Retrieve data from Intent
         val pokemonName = intent.getStringExtra("pokemonName") ?: "Unknown"
         val pokemonId = intent.getIntExtra("pokemonId", -1)
         val pokemonImage = intent.getStringExtra("pokemonImage") ?: ""
@@ -49,23 +47,20 @@ class AboutPokemonActivity : AppCompatActivity() {
         val pokemonWeight = intent.getStringExtra("pokemonWeight") ?: "Unknown"
         val pokemonbase_experience = intent.getStringExtra("pokemonbase_experience") ?: "Unknown"
 
-        // Populate views with data
         pokemonNameTextView.text = pokemonName
         pokemonIdTextView.text = String.format("#%03d", pokemonId)
         pokemonHeightTextView.text = pokemonHeight
         pokemonWeightTextView.text = pokemonWeight
         pokemonbase_experienceTextView.text = pokemonbase_experience
 
-        // Load Pokémon image
         Glide.with(this)
             .load(pokemonImage)
             .placeholder(R.drawable.placeholder_image)
             .into(pokemonImageView)
 
-        // Back Button Functionality
         val backButton: Button = findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            finish() // Return to the previous activity
+            finish()
         }
 
 

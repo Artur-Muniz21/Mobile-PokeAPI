@@ -47,13 +47,11 @@ class PokemonActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        // Search functionality
         val searchEditText = findViewById<EditText>(R.id.searchEditText)
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filterPokemon(s.toString()) // Filter as text changes
+                filterPokemon(s.toString())
             }
             override fun afterTextChanged(s: Editable?) {}
         })
@@ -71,6 +69,7 @@ class PokemonActivity : AppCompatActivity() {
                     val game_index = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
                     val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(game_index)
 
+
                     val pokemon = Pokemon(
                         game_index = game_index,
                         name = pokemonResponse.name.capitalize(),
@@ -83,7 +82,7 @@ class PokemonActivity : AppCompatActivity() {
                 }
 
                 withContext(Dispatchers.Main) {
-                    adapter = PokemonAdapter(pokemonList.toMutableList()) // Pass a mutable list
+                    adapter = PokemonAdapter(pokemonList.toMutableList())
                     recyclerView.adapter = adapter
                 }
             } catch (e: Exception) {
@@ -98,6 +97,6 @@ class PokemonActivity : AppCompatActivity() {
             pokemon.name.lowercase().contains(lowercaseQuery) ||
                     pokemon.types.any { type -> type.lowercase().contains(lowercaseQuery) }
         }
-        adapter.updateList(filteredList) // Update adapter with filtered data
+        adapter.updateList(filteredList)
     }
 }
