@@ -28,22 +28,18 @@ class MinhaPokedexActivity : AppCompatActivity() {
         val searchEditText: EditText = findViewById(R.id.searchEditText)
         val pokemonRecyclerView: RecyclerView = findViewById(R.id.pokemonRecyclerView)
 
-        // Botão de voltar para a tela anterior
         backButton.setOnClickListener {
             finish()
         }
 
-        // Configuração inicial do RecyclerView
         pokedexAdapter = PokemonAdapter(emptyList()) { pokemon ->
             navigateToPokemonDetails(pokemon)
         }
         pokemonRecyclerView.layoutManager = GridLayoutManager(this, 3)
         pokemonRecyclerView.adapter = pokedexAdapter
 
-        // Carregar a lista de Pokémon capturados
         loadCapturedPokemon()
 
-        // Configurar o filtro de busca
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {

@@ -1,6 +1,5 @@
 package com.example.pokev2.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
