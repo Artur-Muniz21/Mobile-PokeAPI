@@ -33,7 +33,7 @@ class PokemonActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.pokemonRecyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val settingsButton = findViewById<Button>(R.id.settingsButton)
         settingsButton.setOnClickListener {

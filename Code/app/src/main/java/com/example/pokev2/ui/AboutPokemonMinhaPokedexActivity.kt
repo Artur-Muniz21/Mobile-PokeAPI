@@ -47,5 +47,22 @@ class AboutPokemonMinhaPokedexActivity : AppCompatActivity() {
             finish()
         }
 
+        val releaseButton: Button = findViewById(R.id.libertarButton)
+        releaseButton.setOnClickListener{
+            val pokemonId = intent.getIntExtra("pokemonId", -1)
+            if (pokemonId != -1) {
+                CapturedPokemonManager.libertaPokemon(
+                    pokemonId = pokemonId,
+                    onSuccess = {
+                        Toast.makeText(this, "Pokémon libertado com sucesso!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    },
+                    onFailure = { exception ->
+                        Toast.makeText(this, "Erro ao liberar Pokémon: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    }
+                )
+            }
+        }
     }
 }
+
