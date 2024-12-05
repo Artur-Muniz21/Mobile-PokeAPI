@@ -1,5 +1,6 @@
 package com.example.pokev2.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -62,6 +63,7 @@ class AboutPokemonMinhaPokedexActivity : AppCompatActivity() {
                     }
                 )
             }
+
         }
 
         val atualizarButton: Button = findViewById(R.id.atualizarButton)
@@ -84,6 +86,7 @@ class AboutPokemonMinhaPokedexActivity : AppCompatActivity() {
             } else if (newName.isEmpty()) {
                 Toast.makeText(this, "Por favor, insira um nome válido para o Pokémon.", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 }

@@ -67,11 +67,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="859e8c06-b57d-432f-a4f4-8bebbb370c72" name="Changes" comment="add buttons and settings option">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/adapter/PokemonAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/app/src/main/res/layout/item_pokemon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/res/layout/item_pokemon.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonMinhaPokedexActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Code/app/src/main/java/com/example/pokev2/ui/AboutPokemonMinhaPokedexActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
