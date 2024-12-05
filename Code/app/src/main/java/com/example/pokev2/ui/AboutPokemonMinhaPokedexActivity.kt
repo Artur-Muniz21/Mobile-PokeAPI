@@ -47,5 +47,44 @@ class AboutPokemonMinhaPokedexActivity : AppCompatActivity() {
             finish()
         }
 
+        val releaseButton: Button = findViewById(R.id.libertarButton)
+        releaseButton.setOnClickListener{
+            val pokemonId = intent.getIntExtra("pokemonId", -1)
+            if (pokemonId != -1) {
+                CapturedPokemonManager.libertaPokemon(
+                    pokemonId = pokemonId,
+                    onSuccess = {
+                        Toast.makeText(this, "Pokémon libertado com sucesso!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    },
+                    onFailure = { exception ->
+                        Toast.makeText(this, "Erro ao liberar Pokémon: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    }
+                )
+            }
+        }
+
+        val atualizarButton: Button = findViewById(R.id.atualizarButton)
+        val editNameEditText: EditText = findViewById(R.id.editNameEditText)
+
+        atualizarButton.setOnClickListener {
+            val newName = editNameEditText.text.toString()
+            val pokemonId = intent.getIntExtra("pokemonId", -1)
+            if (pokemonId != -1 && newName.isNotEmpty()) {
+                CapturedPokemonManager.updatePokemonName(
+                    pokemonId = pokemonId,
+                    newName = newName,
+                    onSuccess = {
+                        Toast.makeText(this, "Nome do Pokémon editado com sucesso!", Toast.LENGTH_SHORT).show()
+                    },
+                    onFailure = { exception ->
+                        Toast.makeText(this, "Erro ao editar nome do Pokémon: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    }
+                )
+            } else if (newName.isEmpty()) {
+                Toast.makeText(this, "Por favor, insira um nome válido para o Pokémon.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
+

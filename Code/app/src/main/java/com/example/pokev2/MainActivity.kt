@@ -103,9 +103,6 @@ class MainActivity : AppCompatActivity() {
                         types = pokemonResponse.types.map { it.type.name },
                         height = "${pokemonResponse.height / 10.0}m", // Convert decimeters to meters
                         weight = "${pokemonResponse.weight / 10.0}kg", // Convert hectograms to kilograms
-                        gender = "♂ 87.5%, ♀ 12.5%", // Placeholder logic
-                        base_experience = pokemonResponse.base_experience ?: 0,
-                        xDescription = description
                     )
                     pokemonList.add(pokemon)
                 }

@@ -36,8 +36,35 @@ object CapturedPokemonManager {
     // Atualizar o nome de um Pokémon pelo ID
     fun updatePokemonName(pokemonId: Int, newName: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val pokemonIdStr = pokemonId.toString()
-        database.child(pokemonIdStr).child("name")
-            .setValue(newName)
+        database.child(pokemonIdStr).child("name") .setValue(newName)
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener {
+                exception -> onFailure(exception)
+            }
+    }
+
+
+    // Remover um Pokémon do Realtime Database pelo ID
+    fun libertaPokemon(pokemonId: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val pokemonIdStr = pokemonId.toString()
+        database.child(pokemonIdStr)
+            .removeValue()
+            .addOnSuccessListener {
+                onSuccess()
+                }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+
+    }
+
+    // Editar um Pokémon pelo ID
+    fun updatePokemon(pokemonId: Int, updatedPokemon: Pokemon, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val pokemonIdStr = pokemonId.toString()
+        database.child(pokemonIdStr)
+            .setValue(updatedPokemon)
             .addOnSuccessListener {
                 onSuccess()
             }
@@ -46,8 +73,8 @@ object CapturedPokemonManager {
             }
     }
 
-    // Remover um Pokémon do Realtime Database pelo ID
-    fun releasePokemon(pokemonId: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+    // Deletar um Pokémon pelo ID
+    fun deletePokemon(pokemonId: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val pokemonIdStr = pokemonId.toString()
         database.child(pokemonIdStr)
             .removeValue()

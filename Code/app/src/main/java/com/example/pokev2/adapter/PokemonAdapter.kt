@@ -48,7 +48,6 @@ class PokemonAdapter(
                         putExtra("pokemonHeight", pokemon.height)
                         putExtra("pokemonWeight", pokemon.weight)
                         putExtra("pokemonbase_experience", pokemon.base_experience.toString())
-                        putExtra("pokemonDescription", pokemon.xDescription)
                         putExtra("pokemonId", pokemon.game_index)
                     }
                     context.startActivity(intent)

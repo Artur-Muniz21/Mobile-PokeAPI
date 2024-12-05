@@ -33,7 +33,7 @@ class PokemonActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.pokemonRecyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         val settingsButton = findViewById<Button>(R.id.settingsButton)
         settingsButton.setOnClickListener {
@@ -83,10 +83,7 @@ class PokemonActivity : AppCompatActivity() {
                         imageUrl = pokemonResponse.sprites.front_default ?: "",
                         types = pokemonResponse.types.map { it.type.name },
                         height = "${pokemonResponse.height / 10.0}m",
-                        weight = "${pokemonResponse.weight / 10.0}kg",
-                        gender = "♂ 87.5%, ♀ 12.5%", // Placeholder logic
-                        base_experience = pokemonResponse.base_experience ?: 0,
-                        xDescription = description
+                        weight = "${pokemonResponse.weight / 10.0}kg"
                     )
                     pokemonList.add(pokemon)
                 }
