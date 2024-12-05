@@ -33,6 +33,18 @@ object CapturedPokemonManager {
             }
     }
 
+    // Atualizar o nome de um Pokémon pelo ID
+    fun updatePokemonName(pokemonId: Int, newName: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val pokemonIdStr = pokemonId.toString()
+        database.child(pokemonIdStr).child("name") .setValue(newName)
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener {
+                exception -> onFailure(exception)
+            }
+    }
+
 
     // Remover um Pokémon do Realtime Database pelo ID
     fun libertaPokemon(pokemonId: Int, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
