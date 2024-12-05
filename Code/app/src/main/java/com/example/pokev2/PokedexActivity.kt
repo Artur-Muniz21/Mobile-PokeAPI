@@ -71,12 +71,6 @@ class PokemonActivity : AppCompatActivity() {
                     val game_index = pokemonSummary.url.split("/".toRegex()).dropLast(1).last().toInt()
                     val pokemonResponse = RetrofitClient.pokeApiService.getPokemon(game_index)
 
-                    val speciesResponse = RetrofitClient.pokeApiService.getPokemonSpecies(game_index)
-                    val description = speciesResponse.flavor_text_entries
-                        .firstOrNull { it.language.name == "en" }
-                        ?.flavor_text?.replace("\n", " ")
-                        ?: "No description available."
-
                     val pokemon = Pokemon(
                         game_index = game_index,
                         name = pokemonResponse.name.capitalize(),

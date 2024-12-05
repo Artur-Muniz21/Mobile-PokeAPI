@@ -1,7 +1,6 @@
 package com.example.pokev2
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -9,16 +8,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.pokev2.model.Pokemon
 import com.example.pokev2.utils.CapturedPokemonManager
-import com.example.pokev2.utils.RetrofitClient
-import com.example.pokev2.utils.TypeUtils
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 class AboutPokemonActivity : AppCompatActivity() {
 
@@ -55,10 +48,6 @@ class AboutPokemonActivity : AppCompatActivity() {
         val pokemonHeight = intent.getStringExtra("pokemonHeight") ?: "Unknown"
         val pokemonWeight = intent.getStringExtra("pokemonWeight") ?: "Unknown"
         val pokemonbase_experience = intent.getStringExtra("pokemonbase_experience") ?: "Unknown"
-
-        // Apply background gradient
-        val primaryType = pokemonTypes.firstOrNull() ?: "normal"
-       // TypeUtils.getGradientForType(primaryType, backgroundView, this)
 
         // Populate views with data
         pokemonNameTextView.text = pokemonName
