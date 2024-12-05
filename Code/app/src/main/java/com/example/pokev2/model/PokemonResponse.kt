@@ -7,11 +7,7 @@ data class PokemonResponse(
     val types: List<String>,
     val height: String,
     val weight: String,
-    val gender: String,
     val base_experience: Int,
-    val xDescription: String,
-    val weaknesses: List<String>,
-    val evolutionChainId: Int // Add this field
 )
 
 data class Sprites(
