@@ -69,7 +69,7 @@ class AboutPokemonActivity : AppCompatActivity() {
 
         // Apply background gradient
         val primaryType = pokemonTypes.firstOrNull() ?: "normal"
-        TypeUtils.getGradientForType(primaryType, backgroundView, this)
+       // TypeUtils.getGradientForType(primaryType, backgroundView, this)
 
         // Populate views with data
         pokemonNameTextView.text = pokemonName

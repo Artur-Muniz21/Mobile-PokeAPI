@@ -31,7 +31,8 @@ class PokemonAdapter(
 
             // Adjust the background color based on the first Pokémon type
             val type = pokemon.types.firstOrNull()?.toLowerCase() ?: "normal" // Default
-            typeTextView.setBackgroundColor(getColorForType(itemView.context, type)) // Set background color
+            typeTextView.setTextColor(getColorForType(itemView.context, type)) // Define a cor do texto
+
 
             // Set up a click listener for the Pokémon card
             itemView.setOnClickListener {
